@@ -3,3 +3,5 @@
 .terraform.local.hcl
 *.tfstate
 key.json
+*.terraform.lock.hcl
+*.tfstate.backup
