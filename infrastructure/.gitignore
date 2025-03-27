@@ -1,6 +1,6 @@
 .terraform/
 *.auto.tfvars
-.terraform.local.hcl
+.terraform.lock.hcl
 *.tfstate
 key.json
 *.terraform.lock.hcl
