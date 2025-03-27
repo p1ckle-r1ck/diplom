@@ -42,6 +42,7 @@ resource "yandex_compute_instance" "worker_node_2" {
   network_interface {
     subnet_id = yandex_vpc_subnet.a_subnet.id
     nat =  true
+    
   }
   boot_disk {
     initialize_params {
