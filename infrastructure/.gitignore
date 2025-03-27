@@ -6,3 +6,5 @@ key.json
 *.terraform.lock.hcl
 *.tfstate.backup
 terraform.tfstate.backup
+hosts.ini
+user.yml

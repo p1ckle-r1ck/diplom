@@ -1,8 +1,9 @@
 resource "yandex_compute_instance" "master_node" {
+    name = "master"
     resources {
-      memory = var.k8s-instance.master_node.memory
-      cores = var.k8s-instance.master_node.cores
-      core_fraction = var.k8s-instance.master_node.core_fraction
+      memory = var.k8s-instance["master_node"].memory
+      cores = var.k8s-instance["master_node"].cores
+      core_fraction = var.k8s-instance["master_node"].core_fraction
     }
   network_interface {
     subnet_id = yandex_vpc_subnet.a_subnet.id
@@ -10,43 +11,57 @@ resource "yandex_compute_instance" "master_node" {
   }
   boot_disk {
     initialize_params {
-      image_id = var.k8s-instance.master_node.image_id
+      image_id =  data.yandex_compute_image.fedora.id
     }
   }
+  metadata = {
+    user-data = "${file("user.yml")}"
+}
 }
 
-resource "yandex_compute_instance" "worker_node_1" {
+resource "yandex_compute_instance" "worker-node-1" {
+    name = "worker1"
+    zone = var.network-zones.b
     resources {
-      memory = var.k8s-instance.worker_node_1.memory
-      cores = var.k8s-instance.worker_node_1.cores
-      core_fraction = var.k8s-instance.worker_node_1.core_fraction
+      memory = var.k8s-instance["worker_node"].memory
+      cores = var.k8s-instance["worker_node"].cores
+      core_fraction = var.k8s-instance["worker_node"].core_fraction
     }
   network_interface {
-    subnet_id = yandex_vpc_subnet.a_subnet.id
+    subnet_id = yandex_vpc_subnet.b_subnet.id
     nat = true
 
   }
   boot_disk {
     initialize_params {
-      image_id = var.k8s-instance.master_node.image_id
+      image_id = data.yandex_compute_image.fedora.id
     }
   }
+  metadata = {
+    user-data = "${file("user.yml")}"
+}
 }
 
-resource "yandex_compute_instance" "worker_node_2" {
+resource "yandex_compute_instance" "worker-node-2" {
+    name = "worker2"
+    zone = var.network-zones.d
+    platform_id = "standard-v2"
     resources {
-      memory = var.k8s-instance.worker_node_2.memory
-      cores = var.k8s-instance.worker_node_2.cores
-      core_fraction = var.k8s-instance.worker_node_2.core_fraction
+      memory = var.k8s-instance["worker_node"].memory
+      cores = var.k8s-instance["worker_node"].cores
+      core_fraction = var.k8s-instance["worker_node"].core_fraction
     }
   network_interface {
-    subnet_id = yandex_vpc_subnet.a_subnet.id
+    subnet_id = yandex_vpc_subnet.d_subnet.id
     nat =  true
     
   }
   boot_disk {
     initialize_params {
-      image_id = var.k8s-instance.master_node.image_id
+      image_id =  data.yandex_compute_image.fedora.id
     }
   }
+  metadata = {
+    user-data = "${file("user.yml")}"
+}
 }

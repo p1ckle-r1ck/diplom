@@ -47,18 +47,11 @@ variable "k8s-instance" {
       memory = 2
       core_fraction = 20
     }
-    "worker_node_1" = {
+    "worker_node" = {
       image_id = "fd8u4lo7mqb9ikhuskqp"
       cores = 2
       memory = 2
       core_fraction = 20
-    }
-    "worker_node_2" = {
-      image_id = "fd8u4lo7mqb9ikhuskqp"
-      cores = 2
-      memory = 2
-      core_fraction = 20
-    }
   }
-  
+  }
 }
