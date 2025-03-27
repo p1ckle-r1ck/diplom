@@ -1,0 +1,5 @@
+.terraform/
+*.auto.tfvars
+.terraform.local.hcl
+*.tfstate
+key.json
