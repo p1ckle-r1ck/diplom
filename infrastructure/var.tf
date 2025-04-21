@@ -1,9 +1,9 @@
-variable "cloud" { 
+variable "cloud" {
   type = object({
-    folder_id = string
+    folder_id    = string
     default_zone = string
-    cloud_id = string
-    
+    cloud_id     = string
+
   })
 }
 variable "network-zones" {
@@ -24,34 +24,34 @@ variable "network-zones" {
 
 variable "service_account_s3" {
   type = object({
-    name = string
+    name      = string
     folder_id = string
   })
   default = {
-    name = "service-account-s3"
+    name      = "service-account-s3"
     folder_id = ""
   }
 }
 
 variable "k8s-instance" {
   type = map(object({
-    image_id = string
-    cores = number
-    memory = number
+    image_id      = string
+    cores         = number
+    memory        = number
     core_fraction = number
   }))
   default = {
     "master_node" = {
-      image_id = "fd8u4lo7mqb9ikhuskqp"
-      cores = 2
-      memory = 2
+      image_id      = "fd8u4lo7mqb9ikhuskqp"
+      cores         = 2
+      memory        = 2
       core_fraction = 20
     }
     "worker_node" = {
-      image_id = "fd8u4lo7mqb9ikhuskqp"
-      cores = 2
-      memory = 2
+      image_id      = "fd8u4lo7mqb9ikhuskqp"
+      cores         = 2
+      memory        = 2
       core_fraction = 20
-  }
+    }
   }
 }

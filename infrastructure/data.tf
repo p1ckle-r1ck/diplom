@@ -1,3 +1,3 @@
 data "yandex_compute_image" "fedora" {
-    family = "fedora-37"
+  family = "fedora-37"
 }
