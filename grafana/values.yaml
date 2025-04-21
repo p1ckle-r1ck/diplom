@@ -14,8 +14,8 @@ alertmanager:
     receivers:
       - name: telegram-alert
         telegram_configs:
-          - chat_id: -4663835746
-            bot_token: 7716930921:AAE4XoAYl0GdvIcSzdyPku7CrwqdLvqS5-g
+          - chat_id: 
+            bot_token: 
             api_url: "https://api.telegram.org"
             send_resolved: true
             parse_mode: html
