@@ -8,3 +8,4 @@ key.json
 terraform.tfstate.backup
 hosts.ini
 user.yml
+atlantis/values.yaml
